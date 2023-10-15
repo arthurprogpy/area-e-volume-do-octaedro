@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Área e Volume</title>
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: calibri, Arial, Helvetica, sans-serif;
+            color: #222;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0 0px; /* Ajusta a margem para aproximar a caixa das bordas */
+            background: white;
+        }
+
+        .bah {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            padding: 35px;
+            border: 5px solid #777;
+            box-shadow: 0px 20px -5px #aaa;
+            border-radius: 5px;
+            background: white;
+            margin: 50px 0 !important; /* Ajusta a margem para aproximar da borda superior e inferior */
+        }
+
+        h1 {
+            font-size: 14pt;
+            margin: 0;
+            text-align: center;
+        }
+
+        .nomes {
+            margin: 0;
+            text-align: right;
+        }
+
+        .input {
+            width: calc(100% - 20px);
+            height: 30px;
+            padding: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            margin: auto;
+        }
+
+        .calcula-bnt {
+            margin-top: 5px;
+            height: 50px;
+            width: 250px;
+            text-shadow: 0px 0px 8px #d9e0eb;
+            margin: auto;
+        }
+        p{
+            text-align: center;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="bah" id="ret-bah">
+            <h1>Calculadora de Área e Volume</h1>
+            <h1>Fórmula de Área: 2 • a² • √3</h1>
+            <h1>Fórmula de Volume: a³ • √2 / 3</h1>
+            <!-- VALOR A -->
+    
+            <label for="entrada-lado-a" class="nomes"><p>Aresta:</p></label>
+            <input type="number" id="entrada-lado-a" class="input"></input>
+
+            <label for="result-perim" class="nomes"><p>Área do Octógono Regular:</p></label>
+            <input type="text" id="result-perim" disabled class="input"></input>
+
+            <label for="result-volume" class="nomes"><p>Volume do Octógono Regular:</p></label>
+            <input type="text" id="result-volume" disabled class="input"></input>
+
+            <button class="calcula-bnt" id="calcula-ret">Calcular</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("calcula-ret").addEventListener("click", function() {
+            let lado = parseFloat(document.getElementById("entrada-lado-a").value);
+
+            let area = lado * lado * 2 * 1.73;
+            let volume = lado * lado * lado * 1.41 / 3;
+
+            document.getElementById("result-perim").value = area.toFixed(2);
+            document.getElementById("result-volume").value = volume.toFixed(2);
+        });
+    </script>
+</body>
+
+</html>
